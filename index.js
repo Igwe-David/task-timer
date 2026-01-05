@@ -36,8 +36,6 @@ inputSection.style.display = "none";
 }}                                                                  
 };  
 
-let canPause = true;
-
 //                                                                    Display task text and task time
 function displaytask(task, time) {                                  
   taskDisplayed.innerText = task;                                   
