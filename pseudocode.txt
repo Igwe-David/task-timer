@@ -1,0 +1,120 @@
+App starts
+App starts in idle state
+Inputs are enabled
+No task is active
+________________________________________
+Task Input
+When user clicks submit task:
+  If task input is empty:
+    Display "Please input task text"
+    Stop action
+
+  Save task text
+  Clear task input
+  Enable time input
+  Change button text to "Set Time"
+________________________________________
+Time Input
+When user submits time:
+  Save time value
+  Disable all inputs
+  Display task text and timer
+  Show pause button
+  Hide or disable delete button
+  Start countdown
+________________________________________
+Timer Running State
+While timer is running:
+  Decrease remaining time every second
+  Update timer display
+
+  If user tries to input a new task:
+    Display "Cannot input task while current task is running"
+________________________________________
+Pause State
+When pause button is clicked:
+  Stop countdown
+  Change button text to "Continue"
+  Enable delete button
+
+When continue button is clicked:
+  Resume countdown
+  Change button text back to "Pause"
+  Disable delete button
+________________________________________
+Delete State
+When delete button is clicked:
+  Stop countdown
+  Clear task display
+  Hide buttons
+  Enable inputs
+  Return app to idle state
+________________________________________
+Complete State
+If timer reaches 0:
+  Stop countdown
+  Clear task and buttons
+  Display "Task Completed 🎉"
+  Play congratulation sound for 3 seconds
+  Enable inputs
+  Return app to idle state
+________________________________________
+4️⃣ JavaScript TOOLS You’ll Need (Mapped Clearly)
+Here’s the exact JS tools, no overwhelm 👇
+________________________________________
+🔹 Saving Data
+Used for:
+•	Task text
+•	Time
+•	Pause state
+let taskText
+let timeRemaining
+let isPaused = false
+________________________________________
+🔹 Conditionals
+Used for:
+•	Empty input
+•	Pause vs continue
+•	Delete allowed or not
+if (...)
+else if (...)
+________________________________________
+🔹 Timers
+Used for:
+•	Countdown
+•	Completion trigger
+setInterval()
+clearInterval()
+setTimeout()
+________________________________________
+🔹 DOM Manipulation
+Used for:
+•	Showing / hiding text
+•	Updating timer
+•	Changing button text
+textContent
+innerText
+classList.add()
+classList.remove()
+style.display
+________________________________________
+🔹 Event Listeners
+Used for:
+•	Button clicks
+•	Submissions
+addEventListener("click", ...)
+________________________________________
+🔹 Audio
+Used for:
+•	Task completion sound
+new Audio()
+audio.play()
+________________________________________
+🔥 Final Verdict
+✅ Your pseudo code is good
+✅ Your thinking is correct
+✅ You are ready to start coding
+The only improvement you needed was:
+Focus pseudo code on behavior, not JS syntax guesses
+________________________________________
+

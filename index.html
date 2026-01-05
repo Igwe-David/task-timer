@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Timer</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <main class="app">
+
+    <h1 class="title">Task Timer</h1>
+
+    <!-- Message / Status -->
+    <h2 id="status-message"></h2>
+
+    <!-- Input Section -->
+    <div class="input-section">
+
+      <input 
+        type="text" 
+        id="task-input" 
+        placeholder="Enter task"
+      />
+
+      <input 
+        type="number" 
+        id="time-input" 
+        placeholder="Time (minutes)"
+        disabled
+      />
+
+      <button id="start-btn">
+        Add Task
+      </button>
+
+    </div>
+
+    <!-- Task Display -->
+    <div class="task-container hidden">
+
+      <p id="task-name"></p>
+
+      <p id="timer-display">00:00</p>
+
+      <div class="controls">
+        <button id="pause-btn" disabled>Pause</button>
+        <button id="delete-btn" disabled>Delete</button>
+      </div>
+
+    </div>
+
+  </main>
+<script src="index.js"></script>
+</body>
+</html>
