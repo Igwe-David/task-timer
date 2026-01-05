@@ -52,6 +52,7 @@ let totalSeconds = 0;
 let isPaused = false;
 
 
+
 function startCountdown(minutesInput) { 
  totalSeconds = parseInt(minutesInput, 10) * 60;
  countDownTimer = setInterval(runTimer, 1000);     
@@ -83,9 +84,10 @@ console.log(totalSeconds);
    function pauseTimer(){
     if (!isPaused){
     clearInterval(countDownTimer);
-    isPaused = true;
     pauseButton.textContent="Resume";
+    isPaused = true;
     deleteButton.disabled = false;
+    reset = true;
     } else {
     countDownTimer = setInterval(runTimer, 1000);
     isPaused = false;
@@ -93,6 +95,25 @@ console.log(totalSeconds);
     deleteButton.disabled = true;
   }
    };
+
+  deleteButton.addEventListener("click",deleteCurrentTask);
+
+  function deleteCurrentTask(){
+    inputSection.style.display = "flex";
+    taskContainer.style.display = "none";
+    taskInput.value = "";
+    timeInput.value = "";
+    taskInput.disabled = false;
+    deleteButton.disabled = true;
+    clearInterval(startCountdown);
+    clearInterval(runTimer);
+    countDownTimer = null;
+    // totalSeconds = 0;
+    isPaused = false;
+    pauseButton.textContent = "Pause";
+    statusMessage.textContent = "";
+    statusMessage.style.display = "block"; // or whatever it was originally
+  };
     
 
 
