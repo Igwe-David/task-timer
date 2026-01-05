@@ -15,7 +15,7 @@ addTaskButton.addEventListener("click", addTask);
 function addTask(){                                                 
  if (taskInput.value === "") {                                      
   statusMessage.textContent = "Please Input a Task";                
-  return                                                            
+  return;                                                           
 }  else {                                                           
   let taskInputted = taskInput.value;                               
   taskInput.disabled = true;                                        
@@ -23,6 +23,7 @@ function addTask(){
 
  if (timeInput.value === "" || timeInput.value < 0){                                       
    statusMessage.textContent = "PLease input the time for the task" 
+   return;
  }                                                                  
 
 else{                                                               
@@ -31,25 +32,20 @@ timeInput.disabled = true;
 statusMessage.style.display = "none";                               
 inputSection.style.display = "none";                                
 
- displaytask(taskInputted, timeInputted);                           
-                                                                    
+ displaytask(taskInputted, timeInputted);                                                                             
 }}                                                                  
 };  
-
-//                                                                    Display task text and task time
+                                                                 
 function displaytask(task, time) {                                  
   taskDisplayed.innerText = task;                                   
   timeDisplayed.innerText = time;                                   
   taskContainer.style.display = "block";                            
-  startCountdown(time); 
-                                          
+  startCountdown(time);                                          
 }     
 
 let countDownTimer = null;
 let totalSeconds = 0;
 let isPaused = false;
-
-
 
 function startCountdown(minutesInput) { 
  totalSeconds = parseInt(minutesInput, 10) * 60;
@@ -71,9 +67,11 @@ console.log(totalSeconds);
  if(totalSeconds <= 0){           
   clearInterval(countDownTimer);         
   timeDisplayed.innerText= "Finished";                  
-  pauseButton.disabled = true;                                                
+  pauseButton.disabled = true;
+  playSound();   
+  deleteButton.disabled = false;                                            
     } else{
-       pauseButton.disabled = false;  
+       pauseButton.disabled = false;
     }
   };
 
@@ -85,7 +83,6 @@ console.log(totalSeconds);
     pauseButton.textContent="Resume";
     isPaused = true;
     deleteButton.disabled = false;
-    reset = true;
     } else {
     countDownTimer = setInterval(runTimer, 1000);
     isPaused = false;
@@ -103,14 +100,18 @@ console.log(totalSeconds);
     timeInput.value = "";
     taskInput.disabled = false;
     deleteButton.disabled = true;
-    clearInterval(startCountdown);
-    clearInterval(runTimer);
+    clearInterval(countDownTimer);
     countDownTimer = null;
-    // totalSeconds = 0;
+    totalSeconds = 0;
     isPaused = false;
     pauseButton.textContent = "Pause";
     statusMessage.textContent = "";
-    statusMessage.style.display = "block"; // or whatever it was originally
+    statusMessage.style.display = "block";
+  };
+
+  function playSound(){
+   const audio = new Audio('tada.mp3');
+   audio.play();
   };
     
 
